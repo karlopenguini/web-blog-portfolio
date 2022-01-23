@@ -58,12 +58,17 @@ let works = ({ data }) => {
                                           project_title,
                                           project_year,
                                           project_description,
+                                          project_thumbnail,
                                       },
                                   ]) => (
                                       <FeaturedCard
                                           title={project_title}
                                           year={project_year}
                                           desc={project_description}
+                                          img={
+                                              project_thumbnail.data.attributes
+                                                  .url
+                                          }
                                       />
                                   )
                               )

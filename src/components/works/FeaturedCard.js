@@ -1,18 +1,10 @@
 import * as React from "react";
 
-let FeaturedCard = ({ title, year, desc }) => {
+let FeaturedCard = ({ title, year, desc, img }) => {
+    let cardImg = "http://localhost:1337" + img;
+
     return (
-        <article
-            className="
-            flex
-            flex-col-reverse
-            bg-slate-600
-            w-full
-            h-72
-            bg-[url('../images/placeholder.jpeg')]
-            bg-contain
-        "
-        >
+        <article className="flex flex-col-reverse w-full h-72">
             <div
                 className="
                 flex
@@ -38,6 +30,9 @@ let FeaturedCard = ({ title, year, desc }) => {
                     <h5 className="test-xs">{year}</h5>
                 </header>
                 <p className="text-[9px] text-right">{desc}</p>
+            </div>
+            <div className="min-h-0 bg-top bg-cover overflow-hidden border-[1px] border-black">
+                <img className="" src={cardImg} />
             </div>
         </article>
     );
