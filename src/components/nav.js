@@ -1,51 +1,60 @@
 import React from "react";
 import { Link } from "gatsby";
 import AffilIcons from "./AffilIcons";
-
-let navlinks = {
-    "about me": "/",
-    works: "/works",
-    resume: "/resume",
-    blog: "/blog",
-    "contact me": "/contact_me",
-    gallery: "/gallery",
-};
+import penguin from "../images/pfp.jpg";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 let Nav = () => {
-    return (
-        <main
-            className="
-            flex
-            flex-col
-            space-y-8
-        "
-        >
-            <figure
-                className="
-                rounded-full
-                bg-[url('../images/pfp.jpg')]
-                bg-cover
-                w-32
-                h-32
-            "
-            ></figure>
+	let navlinks = {
+		"about me": "/",
+		works: "/works",
+		resume: "/resume",
+		blog: "/blog",
+		"contact me": "/contact_me",
+		gallery: "/gallery",
+	};
 
-            <nav
-                className="
+	return (
+		<nav
+			className="
+            space-y-8
+            z-[1]
+        "
+		>
+			<div className="h-auto w-full aspect-square">
+				<img
+					src={penguin}
+					className="rounded-full object-cover bg-contain grow_effect"
+				/>
+			</div>
+
+			<nav
+				className="
                 flex
                 flex-col
-                space-y-6
+                overflow-hidden
+                slide_from_left
+                space-y-5
+                min-w-[50%]
             "
-            >
-                {Object.entries(navlinks).map(([pageName, link]) => (
-                    <Link to={link} activeClassName="font-bold">
-                        /{pageName}
-                    </Link>
-                ))}
-            </nav>
-            <AffilIcons />
-        </main>
-    );
+			>
+				{Object.entries(navlinks).map(([pageName, link]) => (
+					<AniLink
+						cover
+						direction="down"
+						to={link}
+						bg="#FFFFFF"
+						duration={1.5}
+						activeClassName="font-bold"
+						className="hover-underline-animation pb-1"
+					>
+						<span className="">{pageName}</span>
+					</AniLink>
+				))}
+			</nav>
+			<AffilIcons />
+		</nav>
+	);
 };
 
 export default Nav;

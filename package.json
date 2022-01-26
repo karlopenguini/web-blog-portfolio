@@ -1,39 +1,41 @@
 {
-    "name": "karlopalisoc",
-    "version": "1.0.0",
-    "private": true,
-    "description": "karlopalisoc",
-    "author": "karlo",
-    "keywords": [
-        "gatsby"
-    ],
-    "scripts": {
-        "develop": "gatsby develop",
-        "start": "gatsby develop",
-        "build": "gatsby build",
-        "serve": "gatsby serve",
-        "clean": "gatsby clean"
-    },
-    "dependencies": {
-        "@mdx-js/mdx": "^1.6.22",
-        "@mdx-js/react": "^1.6.22",
-        "gatsby": "^4.5.2",
-        "gatsby-plugin-image": "^2.5.1",
-        "gatsby-plugin-mdx": "^3.5.2",
-        "gatsby-plugin-page-creator": "^4.5.2",
-        "gatsby-plugin-sharp": "^4.5.1",
-        "gatsby-source-filesystem": "^4.5.2",
-        "gatsby-source-graphql": "^4.5.1",
-        "gatsby-source-strapi": "^1.0.2",
-        "gatsby-transformer-sharp": "^4.5.0",
-        "react": "^17.0.1",
-        "react-dom": "^17.0.1",
-        "react-icons": "^4.3.1"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.4.2",
-        "gatsby-plugin-postcss": "^5.5.0",
-        "postcss": "^8.4.5",
-        "tailwindcss": "^3.0.15"
-    }
+	"name": "karlopalisoc",
+	"version": "1.0.0",
+	"private": true,
+	"description": "karlopalisoc",
+	"author": "karlo",
+	"keywords": [
+		"gatsby"
+	],
+	"scripts": {
+		"develop": "gatsby develop",
+		"start": "gatsby develop",
+		"build": "gatsby build",
+		"serve": "gatsby serve",
+		"clean": "gatsby clean"
+	},
+	"dependencies": {
+		"gatsby": "^4.5.2",
+		"gatsby-plugin-image": "^2.5.1",
+		"gatsby-plugin-layout": "^3.5.0",
+		"gatsby-plugin-mdx": "^3.5.2",
+		"gatsby-plugin-modal-routing": "^1.2.0",
+		"gatsby-plugin-page-creator": "^4.5.2",
+		"gatsby-plugin-sharp": "^4.5.1",
+		"gatsby-plugin-transition-link": "^1.20.5",
+		"gatsby-source-filesystem": "^4.5.2",
+		"gatsby-source-graphql": "^4.5.1",
+		"gatsby-source-strapi": "^1.0.2",
+		"gatsby-transformer-sharp": "^4.5.0",
+		"gsap": "^3.9.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-icons": "^4.3.1"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.2",
+		"gatsby-plugin-postcss": "^5.5.0",
+		"postcss": "^8.4.5",
+		"tailwindcss": "^3.0.15"
+	}
 }
