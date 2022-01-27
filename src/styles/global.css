@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -20,10 +20,14 @@
 *,
 *::before,
 *::after {
-	font-family: "IBM Plex Mono", monospace;
+	font-family: "Roboto", sans-serif;
 	box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	margin: 0;
+}
+
+*::-webkit-scrollbar {
+	display: none;
 }
 .hover-underline-animation {
 	display: inline-block;
@@ -45,10 +49,6 @@
 	transition: transform 0.25s ease-out;
 }
 
-.activated::before {
-	content: "/";
-}
-
 .hover-underline-animation:hover:after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
@@ -62,111 +62,10 @@
 	grid-gap: 0.2rem;
 }
 
-.slide_from_bottom,
-.slide_from_left,
-.slide_from_top,
-.grow_effect {
-	transform: translate3d(0, 0, 0);
-}
-
-.slide_from_top {
-	animation: 1s ease-in-out 0s 1 slideInFromTop;
-	will-change: transform;
-}
-.grow_effect {
-	animation: 1s ease-in-out 0s 1 scaleFrom;
-	will-change: transform;
-}
-.grow_effect_delay a {
-	animation: 1s ease-in-out 0s 1 scaleFrom;
-	will-change: transform;
-	animation-fill-mode: both;
-}
-.slide_from_left a {
-	/* This section calls the slideInFromLeft animation we defined above */
-	animation: 1s ease-out 0s 1 slideInFromLeft;
-	will-change: transform;
-	animation-fill-mode: both;
-}
-.slide_from_bottom {
-	animation: 0.5s ease-in-out 0s 1 slideInFromBottom;
-	will-change: transform;
-}
-
-@keyframes slideInFromLeft {
-	0% {
-		opacity: 0;
-		transform: translateX(-100%);
-	}
-	100% {
-		opacity: 100;
-		transform: translateX(0);
-	}
-}
-
-@keyframes scaleFrom {
-	0% {
-		opacity: 0;
-		transform: scale(0);
-	}
-	100% {
-		opacity: 100;
-		transform: scale(1);
-	}
-}
-
-@keyframes slideInFromTop {
-	0% {
-		opacity: 0;
-		transform: translateY(-100%);
-	}
-	100% {
-		opacity: 100;
-		transform: translateY(0);
-	}
-}
-
-@keyframes slideInFromBottom {
-	0% {
-		opacity: 0;
-		transform: translateY(100%);
-	}
-	100% {
-		opacity: 100;
-		transform: translateY(0);
-	}
-}
-
 .content_layout > *:nth-child(1) {
 	flex: 1 1 15%;
 	min-width: 123px;
 }
 .content_layout > *:nth-child(2) {
 	flex: 1 1 85%;
-}
-
-.grow_effect_delay a:nth-child(1) {
-	animation-delay: 0s;
-}
-.grow_effect_delay a:nth-child(2) {
-	animation-delay: 0.19s;
-}
-
-.slide_from_left a:nth-child(1) {
-	animation-delay: 0.083s;
-}
-.slide_from_left a:nth-child(2) {
-	animation-delay: 0.166s;
-}
-.slide_from_left a:nth-child(3) {
-	animation-delay: 0.249s;
-}
-.slide_from_left a:nth-child(4) {
-	animation-delay: 0.332s;
-}
-.slide_from_left a:nth-child(5) {
-	animation-delay: 0.415s;
-}
-.slide_from_left a:nth-child(6) {
-	animation-delay: 0.498s;
 }

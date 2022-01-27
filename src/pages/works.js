@@ -1,54 +1,50 @@
-import * as React from "react";
+import * as React from "react"
 
-import FeaturedCard from "../components/works/FeaturedCard";
-import Work from "../components/works/Work";
-import { graphql, Link } from "gatsby";
+import FeaturedCard from "../components/works/FeaturedCard"
+import Work from "../components/works/Work"
+import { graphql, Link } from "gatsby"
 
 let works = ({ data }) => {
-	let allProjects = data.portfolio_data.projects.data;
+	let allProjects = data.portfolio_data.projects.data
 
-	let featuredProjects = {};
-	let otherProjects = {};
+	let featuredProjects = {}
+	let otherProjects = {}
 
 	for (const [key, value] of Object.entries(allProjects)) {
-		let { is_featured } = value.attributes;
+		let { is_featured } = value.attributes
 
 		if (is_featured) {
-			featuredProjects[key] = value.attributes;
+			featuredProjects[key] = value.attributes
 		} else {
-			otherProjects[key] = value.attributes;
+			otherProjects[key] = value.attributes
 		}
 	}
 
 	return (
 		<main
-			className="
+			className='
                 flex
                 flex-col
                 space-y-11
-            "
-		>
+            '>
 			<section
-				className="
+				className='
                     flex
                     flex-col
                     space-y-9
-                "
-			>
+                '>
 				<h1
-					className="
+					className='
                         text-lg
                         font-bold
-                    "
-				>
+                    '>
 					Featured
 				</h1>
 
 				<div
-					className="
+					className='
                         space-y-9
-                    "
-				>
+                    '>
 					{Object.keys(featuredProjects).length
 						? Object.entries(featuredProjects).map(
 								([
@@ -79,27 +75,24 @@ let works = ({ data }) => {
 			</section>
 
 			<section
-				className="
+				className='
                     flex
                     flex-col
                     space-y-9
-                "
-			>
+                '>
 				<h1
-					className="
+					className='
                         text-lg
                         font-bold
-                    "
-				>
+                    '>
 					Other Works
 				</h1>
 				<div
-					className="
+					className='
                         flex
                         flex-col
                         space-y-9
-                    "
-				>
+                    '>
 					{Object.keys(otherProjects).length
 						? Object.entries(otherProjects).map(
 								([
@@ -116,8 +109,8 @@ let works = ({ data }) => {
 				</div>
 			</section>
 		</main>
-	);
-};
+	)
+}
 
 export const query = graphql`
 	query MyQuery {
@@ -143,6 +136,6 @@ export const query = graphql`
 			}
 		}
 	}
-`;
+`
 
-export default works;
+export default works

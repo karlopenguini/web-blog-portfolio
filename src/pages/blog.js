@@ -1,15 +1,15 @@
-import * as React from "react";
+import * as React from "react"
 
-import BlogCard from "../components/blog/blogCard";
+import BlogCard from "../components/blog/blogCard"
 
-import { graphql } from "gatsby";
+import { graphql } from "gatsby"
 
 let IndexPage = ({ data }) => {
-	let blogPosts = data.portfolio_data.blogPosts.data;
-	console.log(blogPosts);
+	let blogPosts = data.portfolio_data.blogPosts.data
+	console.log(blogPosts)
 	return (
-		<div className="flex flex-col space-y-10">
-			<h1 className="font-bold text-lg">Posts</h1>
+		<div className='flex flex-col space-y-10'>
+			<h1 className='font-bold text-lg'>Posts</h1>
 			{Object.entries(blogPosts).map(([id, data]) => (
 				<BlogCard
 					title={data.attributes.title}
@@ -19,8 +19,8 @@ let IndexPage = ({ data }) => {
 				/>
 			))}
 		</div>
-	);
-};
+	)
+}
 export const query = graphql`
 	{
 		portfolio_data {
@@ -36,6 +36,6 @@ export const query = graphql`
 			}
 		}
 	}
-`;
+`
 
-export default IndexPage;
+export default IndexPage

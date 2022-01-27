@@ -1,26 +1,25 @@
-import * as React from "react";
+import * as React from "react"
 
-import HeaderLinks from "../components/resume/HeaderLinks";
-import ResumeComponent from "../components/resume/ResumeComponent";
-import { graphql } from "gatsby";
+import HeaderLinks from "../components/resume/HeaderLinks"
+import ResumeComponent from "../components/resume/ResumeComponent"
+import { graphql } from "gatsby"
 
 let Resume = ({ data }) => {
-	let resumeComponentData = data.portfolio_data.resumeSections.data;
+	let resumeComponentData = data.portfolio_data.resumeSections.data
 
-	let resumeComponents = {};
+	let resumeComponents = {}
 
 	for (const [key, value] of Object.entries(resumeComponentData)) {
-		resumeComponents[key] = value.attributes;
+		resumeComponents[key] = value.attributes
 	}
 
 	return (
 		<main
-			className="
+			className='
         flex
         flex-col
         space-y-10
-      "
-		>
+      '>
 			<HeaderLinks
 				url={
 					data.portfolio_data.resume.data.attributes.resume_file.data
@@ -36,8 +35,8 @@ let Resume = ({ data }) => {
 				<ResumeComponent title={Title} fields={Field} />
 			))}
 		</main>
-	);
-};
+	)
+}
 
 export const query = graphql`
 	{
@@ -70,5 +69,5 @@ export const query = graphql`
 			}
 		}
 	}
-`;
-export default Resume;
+`
+export default Resume

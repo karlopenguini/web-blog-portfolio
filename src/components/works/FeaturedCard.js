@@ -1,14 +1,14 @@
-import * as React from "react";
+import * as React from "react"
 
 let FeaturedCard = ({ title, year, desc, img }) => {
-	let cardImg = "http://localhost:1337" + img;
+	let cardImg = "http://localhost:1337" + img
 
 	return (
-		<article className="flex flex-col w-full border-2">
-			<img className="max-h-[200px] w-full object-cover" src={cardImg} />
+		<article className='flex flex-col w-full border-2'>
+			<img className='max-h-[200px] w-full object-cover' src={cardImg} />
 
 			<div
-				className="
+				className='
                 flex
                 flex-row
               bg-black
@@ -18,24 +18,22 @@ let FeaturedCard = ({ title, year, desc, img }) => {
                 text-white
                 justify-between
                 min-h-[69px]
-            "
-			>
+            '>
 				<header
-					className="
+					className='
                     flex
                     flex-col
                     space-y-1
                     w-full
                     
-                "
-				>
-					<h1 className="test-sm font-bold">{title}</h1>
-					<h5 className="test-xs">{year}</h5>
+                '>
+					<h1 className='test-sm font-bold'>{title}</h1>
+					<h5 className='test-xs'>{year}</h5>
 				</header>
-				<p className="text-[9px] text-right">{desc}</p>
+				<p className='text-[9px] text-right'>{desc}</p>
 			</div>
 		</article>
-	);
-};
+	)
+}
 
-export default FeaturedCard;
+export default FeaturedCard

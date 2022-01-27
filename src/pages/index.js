@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from "react"
 
 let IndexPage = () => {
 	return (
-		<div className="min-w-0">
+		<div className='min-w-0'>
 			Welcome.
 			<br />
 			<br />
@@ -11,7 +11,7 @@ let IndexPage = () => {
 			<br />
 			<br />I also love music, movies, books, and art!
 		</div>
-	);
-};
+	)
+}
 
-export default IndexPage;
+export default IndexPage
