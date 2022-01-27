@@ -1,6 +1,6 @@
 import React from "react"
 import Nav from "./nav"
-import { TransitionPortal } from "gatsby-plugin-transition-link"
+
 export default function Layout({ children, transitionStatus, entry, exit }) {
 	return (
 		<div
@@ -30,9 +30,10 @@ export default function Layout({ children, transitionStatus, entry, exit }) {
         text-center
         mt-auto
 		z-[100000]
+        font-medium
 		
       '>
-				Built with Gatsby, Content by Strapi
+				Built with Gatsby
 				<br />© Karlo Miguel Palisoc | All rights reserved.
 			</footer>
 		</div>
