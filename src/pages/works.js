@@ -1,123 +1,120 @@
-import * as React from "react";
+import * as React from "react"
 
-import FeaturedCard from "../components/works/FeaturedCard";
-import Work from "../components/works/Work";
-import { graphql, Link } from "gatsby";
+import FeaturedCard from "../components/works/FeaturedCard"
+import Work from "../components/works/Work"
+import { graphql, Link } from "gatsby"
 
 let works = ({ data }) => {
-	let allProjects = data.portfolio_data.projects.data;
+	let allProjects = data.portfolio_data.projects.data
 
-	let featuredProjects = {};
-	let otherProjects = {};
+	let featuredProjects = {}
+	let otherProjects = {}
 
 	for (const [key, value] of Object.entries(allProjects)) {
-		let { is_featured } = value.attributes;
+		let { is_featured } = value.attributes
 
 		if (is_featured) {
-			featuredProjects[key] = value.attributes;
+			featuredProjects[key] = value.attributes
 		} else {
-			otherProjects[key] = value.attributes;
+			otherProjects[key] = value.attributes
 		}
 	}
 
 	return (
-		<main
-			className="
+		<div className='lg:overflow-y-scroll lg:h-full'>
+			<main
+				className='
                 flex
                 flex-col
-                space-y-11
-            "
-		>
-			<section
-				className="
+                space-y-24
+            '>
+				<section
+					className='
                     flex
                     flex-col
-                    space-y-9
-                "
-			>
-				<h1
-					className="
-                        text-lg
+                    space-y-12
+                '>
+					<h1
+						className='
+                        text-2xl
                         font-bold
-                    "
-				>
-					Featured
-				</h1>
+						tracking-wider
+                    '>
+						Featured
+					</h1>
 
-				<div
-					className="
+					<div
+						className='
                         space-y-9
-                    "
-				>
-					{Object.keys(featuredProjects).length
-						? Object.entries(featuredProjects).map(
-								([
-									id,
-									{
-										project_title,
-										project_year,
-										project_description,
-										project_thumbnail,
-										project_link,
-									},
-								]) => (
-									<Link to={project_link}>
-										<FeaturedCard
-											title={project_title}
-											year={project_year}
-											desc={project_description}
-											img={
-												project_thumbnail.data
-													.attributes.url
-											}
-										/>
-									</Link>
-								)
-						  )
-						: "Looks like I dont have any projects to feature yet . . ."}
-				</div>
-			</section>
+                    '>
+						{Object.keys(featuredProjects).length
+							? Object.entries(featuredProjects).map(
+									([
+										id,
+										{
+											project_title,
+											project_year,
+											project_description,
+											project_thumbnail,
+											project_link,
+										},
+									]) => (
+										<Link to={project_link}>
+											<FeaturedCard
+												title={project_title}
+												year={project_year}
+												desc={project_description}
+												img={
+													project_thumbnail.data
+														.attributes.url
+												}
+											/>
+										</Link>
+									)
+							  )
+							: "Looks like I dont have any projects to feature yet . . ."}
+					</div>
+				</section>
 
-			<section
-				className="
+				<section
+					className='
                     flex
                     flex-col
-                    space-y-9
-                "
-			>
-				<h1
-					className="
-                        text-lg
+                    space-y-12
+                '>
+					<h1
+						className='
+                        text-2xl
                         font-bold
-                    "
-				>
-					Other Works
-				</h1>
-				<div
-					className="
+						tracking-wider
+                    '>
+						Other Works
+					</h1>
+					<div
+						className='
                         flex
                         flex-col
-                        space-y-9
-                    "
-				>
-					{Object.keys(otherProjects).length
-						? Object.entries(otherProjects).map(
-								([
-									id,
-									{ project_title, project_description },
-								]) => (
-									<Work
-										title={project_title}
-										desc={project_description}
-									/>
-								)
-						  )
-						: "Looks like I dont have any projects yet . . ."}
-				</div>
-			</section>
-		</main>
-	);
-};
+                        space-y-10
+                    '>
+						{Object.keys(otherProjects).length
+							? Object.entries(otherProjects).map(
+									([
+										id,
+										{ project_title, project_description },
+									]) => (
+										<Work
+											title={project_title}
+											desc={project_description}
+										/>
+									)
+							  )
+							: "Looks like I dont have any projects yet . . ."}
+					</div>
+				</section>
+			</main>
+		</div>
+	)
+}
 
 export const query = graphql`
 	query MyQuery {
@@ -143,6 +140,6 @@ export const query = graphql`
 			}
 		}
 	}
-`;
+`
 
-export default works;
+export default works

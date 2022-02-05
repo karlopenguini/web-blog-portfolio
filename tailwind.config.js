@@ -1,4 +1,4 @@
-const colors = require("tailwindcss/colors");
+const colors = require("tailwindcss/colors")
 
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -11,7 +11,11 @@ module.exports = {
 				"light-blue": colors.sky,
 				cyan: colors.cyan,
 			},
+			backgroundImage: {
+				"gradient-radial":
+					"radial-gradient(var(--gradient-color-stops))",
+			},
 		},
 	},
-	plugins: [],
-};
+	plugins: [require("@tailwindcss/typography")],
+}

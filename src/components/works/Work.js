@@ -1,35 +1,34 @@
-import * as React from "react";
-import { MdArrowRight } from "react-icons/md";
+import * as React from "react"
+import { MdArrowRight } from "react-icons/md"
 
 let Work = ({ title, desc }) => {
-    return (
-        <div
-            className="
+	return (
+		<div
+			className='
             flex
             justify-between
             items-center
-        "
-        >
-            <header>
-                <h1
-                    className="
+        '>
+			<header>
+				<h1
+					className='
+                    text-base
+                    font-medium
+                '>
+					{title}
+				</h1>
+				<p
+					className='
+					pt-2
                     text-sm
-                    font-bold
-                "
-                >
-                    {title}
-                </h1>
-                <p
-                    className="
-                    text-xs
-                "
-                >
-                    {desc}
-                </p>
-            </header>
-            <MdArrowRight className="h-7 w-7" />
-        </div>
-    );
-};
+					text-zinc-800
+                '>
+					{desc}
+				</p>
+			</header>
+			<MdArrowRight className='min-h-[1rem] min-w-[1rem] ml-9' />
+		</div>
+	)
+}
 
-export default Work;
+export default Work
