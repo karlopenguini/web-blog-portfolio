@@ -13,7 +13,7 @@ module.exports = {
 				// Field under which the remote schema will be accessible. You'll use this in your Gatsby query
 				fieldName: "portfolio_data",
 				// Url to query from
-				url: "http://localhost:1337/graphql",
+				url: "https://karlopalisoc-blog-content.herokuapp.com/",
 			},
 		},
 		{
@@ -23,4 +23,4 @@ module.exports = {
 			},
 		},
 	],
-};
+}
