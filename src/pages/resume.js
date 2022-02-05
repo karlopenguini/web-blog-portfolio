@@ -14,27 +14,32 @@ let Resume = ({ data }) => {
 	}
 
 	return (
-		<main
-			className='
+		<div className=' lg:h-full'>
+			<main
+				className='
+		
         flex
         flex-col
-        space-y-10
+        space-y-14
       '>
-			<HeaderLinks
-				url={
-					data.portfolio_data.resume.data.attributes.resume_file.data
-						.attributes.url
-				}
-			/>
-			<p>
-				I am a student who loves to learn software development and web
-				development. Capable of building and deploying websites using
-				React and creating applications using C# and Python.
-			</p>
-			{Object.entries(resumeComponents).map(([id, { Title, Field }]) => (
-				<ResumeComponent title={Title} fields={Field} />
-			))}
-		</main>
+				<HeaderLinks
+					url={
+						data.portfolio_data.resume.data.attributes.resume_file
+							.data.attributes.url
+					}
+				/>
+				<p>
+					I am a student who loves to learn software development and
+					web development. Capable of building and deploying websites
+					using React and creating applications using C# and Python.
+				</p>
+				{Object.entries(resumeComponents).map(
+					([id, { Title, Field }]) => (
+						<ResumeComponent title={Title} fields={Field} />
+					)
+				)}
+			</main>
+		</div>
 	)
 }
 

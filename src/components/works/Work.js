@@ -12,19 +12,21 @@ let Work = ({ title, desc }) => {
 			<header>
 				<h1
 					className='
-                    text-sm
-                    font-bold
+                    text-base
+                    font-medium
                 '>
 					{title}
 				</h1>
 				<p
 					className='
-                    text-xs
+					pt-2
+                    text-sm
+					text-zinc-800
                 '>
 					{desc}
 				</p>
 			</header>
-			<MdArrowRight className='h-7 w-7' />
+			<MdArrowRight className='min-h-[1rem] min-w-[1rem] ml-9' />
 		</div>
 	)
 }

@@ -1,6 +1,8 @@
 import React from "react"
-import MDX from "@mdx-js/runtime"
 import { useLocation } from "@reach/router"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeHighlight from "rehype-highlight"
 
 import {
 	FacebookShareButton,
@@ -11,18 +13,12 @@ import {
 	RedditIcon,
 } from "react-share"
 
-import { motion } from "framer-motion"
-
 export default function BlogPostLayout(data) {
 	console.log(data.pageContext)
 	const { title, description, date, blogContent } = data.pageContext
-	let ymdStringify = (ymdDate) => {
-		let [year, month, _date] = ymdDate.split("-")
-		console.log(year, month, _date)
-	}
 
 	return (
-		<div className=''>
+		<div className='h-full overflow-y-scroll'>
 			<header className='flex flex-col'>
 				<div className='flex justify-between items-center'>
 					<p className='text-base'>Karlo Palisoc | {date}</p>
@@ -41,10 +37,20 @@ export default function BlogPostLayout(data) {
 					</div>
 				</div>
 
-				<h1 className='font-black pt-6 text-5xl'>{title}</h1>
+				<h1 className='font-black pt-8 text-5xl tracking-wider'>
+					{title}
+				</h1>
 				<h3 className='pt-8 text-2xl font-medium'>{description}</h3>
 			</header>
-			<MDX>{blogContent}</MDX>
+
+			<div className='pt-14'>
+				<ReactMarkdown
+					children={blogContent}
+					remarkPlugins={[remarkGfm]}
+					rehypePlugins={[rehypeHighlight]}
+					className='prose'
+				/>
+			</div>
 		</div>
 	)
 }

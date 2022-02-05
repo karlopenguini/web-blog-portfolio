@@ -1,6 +1,6 @@
 import React from "react"
 import Detail from "./Detail"
-
+import { motion } from "framer-motion"
 export default function ResumeComponent({ title, fields }) {
 	let resumeFields = {}
 
@@ -16,8 +16,9 @@ export default function ResumeComponent({ title, fields }) {
         '>
 			<h1
 				className='
-                text-lg
+                text-xl
                 font-bold
+				tracking-wide
             '>
 				{title}
 			</h1>
@@ -31,13 +32,14 @@ export default function ResumeComponent({ title, fields }) {
             '>
 				{Object.entries(resumeFields).map(
 					([id, { Heading, Subheading, Body, IsWide }]) => (
-						<div className={IsWide ? "col-span-2" : "col-span-1"}>
+						<motion.div
+							className={IsWide ? "col-span-2" : "col-span-1"}>
 							<Detail
 								heading={Heading}
 								subheading={Subheading}
 								body={Body}
 							/>
-						</div>
+						</motion.div>
 					)
 				)}
 			</div>

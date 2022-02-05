@@ -1,3 +1,7 @@
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
 	siteMetadata: {
 		title: `karlopalisoc`,
@@ -17,11 +21,10 @@ module.exports = {
 			},
 		},
 		{
-			resolve: "gatsby-plugin-transition-link",
+			resolve: `gatsby-plugin-layout`,
 			options: {
-				layout: require.resolve(`./src/components/layout.js`),
-				injectPageProps: false,
+				component: require.resolve(`./src/components/layout.js`),
 			},
 		},
 	],
-};
+}

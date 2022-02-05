@@ -4,7 +4,7 @@ let FeaturedCard = ({ title, year, desc, img }) => {
 	let cardImg = "http://localhost:1337" + img
 
 	return (
-		<article className='flex flex-col w-full border-2'>
+		<article className='flex flex-col w-full shadow-2xl '>
 			<img className='max-h-[200px] w-full object-cover' src={cardImg} />
 
 			<div
@@ -27,10 +27,10 @@ let FeaturedCard = ({ title, year, desc, img }) => {
                     w-full
                     
                 '>
-					<h1 className='test-sm font-bold'>{title}</h1>
+					<h1 className='test-sm font-bold tracking-wide'>{title}</h1>
 					<h5 className='test-xs'>{year}</h5>
 				</header>
-				<p className='text-[9px] text-right'>{desc}</p>
+				<p className='text-xs font-light text-right'>{desc}</p>
 			</div>
 		</article>
 	)

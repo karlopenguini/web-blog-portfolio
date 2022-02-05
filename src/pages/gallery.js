@@ -1,8 +1,5 @@
 import * as React from "react"
-import placeholder from "../images/placeholder.jpeg"
-import penguin from "../images/pfp.jpg"
-import icon from "../images/icon.png"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Image from "../components/gallery/image.js"
 
 function getSpanEstimate(size) {
@@ -22,17 +19,21 @@ let IndexPage = ({ data }) => {
 	}
 
 	return (
-		<div className='gridContainer'>
-			{Object.entries(imageComponentsData).map(
-				([id, { title, date, description, image }]) => (
-					<Image
-						title={title}
-						date={date}
-						description={description}
-						image={image}
-					/>
-				)
-			)}
+		<div>
+			<div className='grid md:grid-cols-2 grid-cols-3 md:gap-4 gap-1'>
+				{Object.entries(imageComponentsData).map(
+					([id, { title, date, description, image, slug }]) => (
+						<Link to={slug}>
+							<Image
+								title={title}
+								date={date}
+								description={description}
+								image={image}
+							/>
+						</Link>
+					)
+				)}
+			</div>
 		</div>
 	)
 }
@@ -55,6 +56,7 @@ export const query = graphql`
 								}
 							}
 						}
+						slug
 					}
 				}
 			}

@@ -21,94 +21,98 @@ let works = ({ data }) => {
 	}
 
 	return (
-		<main
-			className='
+		<div className='lg:overflow-y-scroll lg:h-full'>
+			<main
+				className='
                 flex
                 flex-col
-                space-y-11
+                space-y-24
             '>
-			<section
-				className='
+				<section
+					className='
                     flex
                     flex-col
-                    space-y-9
+                    space-y-12
                 '>
-				<h1
-					className='
-                        text-lg
+					<h1
+						className='
+                        text-2xl
                         font-bold
+						tracking-wider
                     '>
-					Featured
-				</h1>
+						Featured
+					</h1>
 
-				<div
-					className='
+					<div
+						className='
                         space-y-9
                     '>
-					{Object.keys(featuredProjects).length
-						? Object.entries(featuredProjects).map(
-								([
-									id,
-									{
-										project_title,
-										project_year,
-										project_description,
-										project_thumbnail,
-										project_link,
-									},
-								]) => (
-									<Link to={project_link}>
-										<FeaturedCard
-											title={project_title}
-											year={project_year}
-											desc={project_description}
-											img={
-												project_thumbnail.data
-													.attributes.url
-											}
-										/>
-									</Link>
-								)
-						  )
-						: "Looks like I dont have any projects to feature yet . . ."}
-				</div>
-			</section>
+						{Object.keys(featuredProjects).length
+							? Object.entries(featuredProjects).map(
+									([
+										id,
+										{
+											project_title,
+											project_year,
+											project_description,
+											project_thumbnail,
+											project_link,
+										},
+									]) => (
+										<Link to={project_link}>
+											<FeaturedCard
+												title={project_title}
+												year={project_year}
+												desc={project_description}
+												img={
+													project_thumbnail.data
+														.attributes.url
+												}
+											/>
+										</Link>
+									)
+							  )
+							: "Looks like I dont have any projects to feature yet . . ."}
+					</div>
+				</section>
 
-			<section
-				className='
+				<section
+					className='
                     flex
                     flex-col
-                    space-y-9
+                    space-y-12
                 '>
-				<h1
-					className='
-                        text-lg
+					<h1
+						className='
+                        text-2xl
                         font-bold
+						tracking-wider
                     '>
-					Other Works
-				</h1>
-				<div
-					className='
+						Other Works
+					</h1>
+					<div
+						className='
                         flex
                         flex-col
-                        space-y-9
+                        space-y-10
                     '>
-					{Object.keys(otherProjects).length
-						? Object.entries(otherProjects).map(
-								([
-									id,
-									{ project_title, project_description },
-								]) => (
-									<Work
-										title={project_title}
-										desc={project_description}
-									/>
-								)
-						  )
-						: "Looks like I dont have any projects yet . . ."}
-				</div>
-			</section>
-		</main>
+						{Object.keys(otherProjects).length
+							? Object.entries(otherProjects).map(
+									([
+										id,
+										{ project_title, project_description },
+									]) => (
+										<Work
+											title={project_title}
+											desc={project_description}
+										/>
+									)
+							  )
+							: "Looks like I dont have any projects yet . . ."}
+					</div>
+				</section>
+			</main>
+		</div>
 	)
 }
 

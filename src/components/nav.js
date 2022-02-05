@@ -1,7 +1,8 @@
 import React from "react"
 import AffilIcons from "./AffilIcons"
 import penguin from "../images/pfp.jpg"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
+import { motion } from "framer-motion"
 
 let Nav = () => {
 	let navlinks = {
@@ -13,44 +14,91 @@ let Nav = () => {
 		gallery: "/gallery",
 	}
 
-	return (
-		<div>
-			<nav
-				className='
-            space-y-8
-            
-        '>
-				<div className='h-auto w-full aspect-square'>
-					<img
-						src={penguin}
-						className='rounded-full object-cover bg-contain'
-					/>
-				</div>
+	const sizeUp = {
+		hidden: {
+			opacity: 0,
+			scale: "0%",
+			rotate: -40,
+		},
+		show: {
+			opacity: 1,
+			scale: "100%",
+			rotate: 0,
+			transition: {
+				duration: 0.5,
+			},
+		},
+	}
 
-				<nav
-					className='
-                flex
-                flex-col
-                overflow-hidden
-                space-y-5
-                min-w-[50%]
+	const container = {
+		hidden: {
+			x: "-100%",
+		},
+		show: {
+			x: "0%",
+			transition: {
+				staggerChildren: 0.1,
+			},
+		},
+	}
+
+	const listItem = {
+		hidden: {
+			x: "-100%",
+		},
+		show: {
+			x: "0%",
+		},
+	}
+
+	return (
+		<nav
+			className='
+            lg:space-y-8
+            w-full
+			flex
+			lg:flex-col
+			items-center
+			lg:items-start
+			
+        '>
+			<motion.img
+				variants={sizeUp}
+				initial='hidden'
+				animate='show'
+				src={penguin}
+				className='hidden lg:block rounded-full object-cover bg-contain  min-w-0 max-w-[123px] h-auto'
+			/>
+			<motion.nav
+				variants={container}
+				initial='hidden'
+				animate='show'
+				className='
+                lg:flex
+                lg:flex-col
+                lg:space-y-5
+                lg:min-w-[50%]
+				hidden
+				w-full
             '>
-					{Object.entries(navlinks).map(([pageName, link]) => (
-						<AniLink
-							cover
-							direction='down'
+				{Object.entries(navlinks).map(([pageName, link]) => (
+					<motion.div
+						variants={listItem}
+						key={link}
+						className='w-full'>
+						<Link
 							to={link}
-							bg='#FFFFFF'
-							duration={1.3}
 							activeClassName='font-bold'
-							className='hover-underline-animation pb-1'>
-							<span className=''>{pageName}</span>
-						</AniLink>
-					))}
-				</nav>
+							className='pb-1 w-full'>
+							<span className='hover-1 w-full'>{pageName}</span>
+						</Link>
+					</motion.div>
+				))}
+			</motion.nav>
+			<div className='hidden lg:block'>
 				<AffilIcons />
-			</nav>
-		</div>
+			</div>
+		</nav>
 	)
 }
 

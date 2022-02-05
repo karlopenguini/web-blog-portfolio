@@ -6,10 +6,10 @@ import { graphql } from "gatsby"
 
 let IndexPage = ({ data }) => {
 	let blogPosts = data.portfolio_data.blogPosts.data
-	console.log(blogPosts)
+
 	return (
 		<div className='flex flex-col space-y-10'>
-			<h1 className='font-bold text-lg'>Posts</h1>
+			<h1 className='font-bold text-2xl tracking-wider'>Posts</h1>
 			{Object.entries(blogPosts).map(([id, data]) => (
 				<BlogCard
 					title={data.attributes.title}

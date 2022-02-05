@@ -11,7 +11,11 @@ module.exports = {
 				"light-blue": colors.sky,
 				cyan: colors.cyan,
 			},
+			backgroundImage: {
+				"gradient-radial":
+					"radial-gradient(var(--gradient-color-stops))",
+			},
 		},
 	},
-	plugins: [],
+	plugins: [require("@tailwindcss/typography")],
 }
