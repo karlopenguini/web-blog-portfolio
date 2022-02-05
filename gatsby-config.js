@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
 	siteMetadata: {
 		title: `karlopalisoc`,
-		siteUrl: `https://www.yourdomain.tld`,
+		siteUrl: `https://karlopalisoc.netlify.app/`,
 	},
 	plugins: [
 		`gatsby-plugin-postcss`,
@@ -17,7 +17,7 @@ module.exports = {
 				// Field under which the remote schema will be accessible. You'll use this in your Gatsby query
 				fieldName: "portfolio_data",
 				// Url to query from
-				url: "https://karlopalisoc-blog-content.herokuapp.com/",
+				url: "https://karlopalisoc-blog-content.herokuapp.com/graphql",
 			},
 		},
 		{
