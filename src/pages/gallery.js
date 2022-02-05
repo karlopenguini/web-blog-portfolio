@@ -1,41 +1,42 @@
-import * as React from "react";
-import placeholder from "../images/placeholder.jpeg";
-import penguin from "../images/pfp.jpg";
-import icon from "../images/icon.png";
-import { graphql } from "gatsby";
-import Image from "../components/gallery/image.js";
+import * as React from "react"
+import { graphql, Link } from "gatsby"
+import Image from "../components/gallery/image.js"
 
 function getSpanEstimate(size) {
 	if (size > 250) {
-		return 2;
+		return 2
 	}
-	return 1;
+	return 1
 }
 
 let IndexPage = ({ data }) => {
-	let images = data.portfolio_data.galleries.data;
+	let images = data.portfolio_data.galleries.data
 
-	let imageComponentsData = {};
+	let imageComponentsData = {}
 
 	for (const [key, value] of Object.entries(images)) {
-		imageComponentsData[key] = value.attributes;
+		imageComponentsData[key] = value.attributes
 	}
 
 	return (
-		<div className="gridContainer">
-			{Object.entries(imageComponentsData).map(
-				([id, { title, date, description, image }]) => (
-					<Image
-						title={title}
-						date={date}
-						description={description}
-						image={image}
-					/>
-				)
-			)}
+		<div>
+			<div className='grid md:grid-cols-2 grid-cols-3 md:gap-4 gap-1'>
+				{Object.entries(imageComponentsData).map(
+					([id, { title, date, description, image, slug }]) => (
+						<Link to={slug}>
+							<Image
+								title={title}
+								date={date}
+								description={description}
+								image={image}
+							/>
+						</Link>
+					)
+				)}
+			</div>
 		</div>
-	);
-};
+	)
+}
 
 export const query = graphql`
 	{
@@ -55,10 +56,11 @@ export const query = graphql`
 								}
 							}
 						}
+						slug
 					}
 				}
 			}
 		}
 	}
-`;
-export default IndexPage;
+`
+export default IndexPage
