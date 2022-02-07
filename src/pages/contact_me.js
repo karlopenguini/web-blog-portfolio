@@ -90,6 +90,7 @@ let Contact = () => {
 					sitekey={`${process.env.GATSBY_CAPTCHA_SITE_KEY}`}
 					onChange={sendEmail}
 				/>
+
 				<motion.input
 					whileHover={{
 						scale: 1.05,

@@ -10,14 +10,18 @@ let IndexPage = ({ data }) => {
 	return (
 		<div className='flex flex-col space-y-10'>
 			<h1 className='font-bold text-2xl tracking-wider'>Posts</h1>
-			{Object.entries(blogPosts).map(([id, data]) => (
-				<BlogCard
-					title={data.attributes.title}
-					date={data.attributes.date}
-					description={data.attributes.description}
-					slug={data.attributes.slug}
-				/>
-			))}
+			{Object.keys(blogPosts).length ? (
+				Object.entries(blogPosts).map(([id, data]) => (
+					<BlogCard
+						title={data.attributes.title}
+						date={data.attributes.date}
+						description={data.attributes.description}
+						slug={data.attributes.slug}
+					/>
+				))
+			) : (
+				<p>No posts yet!</p>
+			)}
 		</div>
 	)
 }
