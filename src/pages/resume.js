@@ -5,12 +5,12 @@ import ResumeComponent from "../components/resume/ResumeComponent"
 import { graphql } from "gatsby"
 
 let Resume = ({ data }) => {
-	let resumeComponentData = data.portfolio_data.resumeSections.data
+	let resumeComponentData = data.allStrapiResumeSection.edges
 
 	let resumeComponents = {}
 
 	for (const [key, value] of Object.entries(resumeComponentData)) {
-		resumeComponents[key] = value.attributes
+		resumeComponents[key] = value.node
 	}
 
 	return (
@@ -23,11 +23,9 @@ let Resume = ({ data }) => {
         space-y-14
       '>
 				<HeaderLinks
-					url={
-						data.portfolio_data.resume.data.attributes.resume_file
-							.data.attributes.url
-					}
+					url={data.allStrapiResume.edges[0].node.resume_file.url}
 				/>
+
 				<p>
 					I am a student who loves to learn software development and
 					web development. Capable of building and deploying websites
@@ -45,30 +43,24 @@ let Resume = ({ data }) => {
 
 export const query = graphql`
 	{
-		portfolio_data {
-			resumeSections {
-				data {
-					attributes {
-						Title
-						Field {
-							Body
-							Heading
-							Subheading
-							IsWide
-						}
+		allStrapiResume {
+			edges {
+				node {
+					resume_file {
+						url
 					}
 				}
 			}
-			resume {
-				data {
-					attributes {
-						resume_file {
-							data {
-								attributes {
-									url
-								}
-							}
-						}
+		}
+		allStrapiResumeSection {
+			edges {
+				node {
+					Title
+					Field {
+						Body
+						Heading
+						Subheading
+						IsWide
 					}
 				}
 			}

@@ -1,69 +1,64 @@
-const { notDeepEqual } = require("assert")
 const path = require("path")
 
 exports.createPages = async ({ graphql, actions }) => {
 	const { data } = await graphql(`
-		query MyQuery {
-			portfolio_data {
-				blogPosts {
-					data {
-						attributes {
-							title
-							date
-							slug
-							description
-							blogContent
+		{
+			allStrapiGallery {
+				edges {
+					node {
+						date
+						description
+						title
+						slug
+						image {
+							url
 						}
 					}
 				}
-				galleries {
-					data {
-						attributes {
-							date
-							description
-							title
-							slug
-							image {
-								data {
-									attributes {
-										url
-									}
-								}
-							}
-						}
+			}
+			allStrapiBlogPost {
+				edges {
+					node {
+						title
+						date
+						slug
+						description
+						blogContent
 					}
 				}
 			}
 		}
 	`)
-	data.portfolio_data.blogPosts.data.forEach((node) => {
+	console.log(data)
+
+	data.allStrapiGallery.edges.forEach((node) => {
 		actions.createPage({
-			path: "/blog/" + node.attributes.slug,
+			path: "/blog/" + node.slug,
 			component: path.resolve("./src/components/blog/blogPostLayout.js"),
 			context: {
-				title: node.attributes.title,
-				date: node.attributes.date,
-				description: node.attributes.description,
-				blogContent: node.attributes.blogContent,
+				title: node.title,
+				date: node.date,
+				description: node.description,
+				blogContent: node.blogContent,
 			},
 		})
 	})
 
 	let listOfImagePath = []
 
-	data.portfolio_data.galleries.data.forEach((node) => {
-		listOfImagePath.push(node.attributes.slug)
+	data.allStrapiBlogPost.edges.forEach((node) => {
+		listOfImagePath.push(node.slug)
 	})
-	data.portfolio_data.galleries.data.forEach((node) => {
+	data.allStrapiBlogPost.edges.forEach((node) => {
 		actions.createPage({
-			path: "/gallery/" + node.attributes.slug,
+			path: "/gallery/" + node.slug,
 			component: path.resolve("./src/components/gallery/imageLayout.js"),
 			context: {
-				title: node.attributes.title,
-				date: node.attributes.date,
-				description: node.attributes.description,
-				image: node.attributes.image,
-				slug: node.attributes.slug,
+				title: node.title,
+				date: node.date,
+				description: node.description,
+				image: node.image,
+				slug: node.slug,
 				imagePaths: listOfImagePath,
 			},
 		})

@@ -50,38 +50,41 @@ let Contact = () => {
 				onSubmit={sendEmail}
 				className='flex flex-col space-y-9 w-full pb-14'>
 				<div className='w-full flex flex-col'>
-					<label className='pb-2'>
+					<label className='pb-2' htmlFor='name'>
 						Name:<span className='text-red-600'>*</span>
 					</label>
 					<motion.input
 						whileFocus={{ borderColor: "#000000", padding: "8px" }}
 						required
 						type='text'
+						id='name'
 						name='name'
 						className='focus:outline-none font-light border-b-[1px] border-zinc-400 min-w-full'
 					/>
 				</div>
 
 				<div className='w-full flex flex-col'>
-					<label className='pb-2'>
+					<label className='pb-2' htmlFor='email'>
 						Email:<span className='text-red-600'>*</span>
 					</label>
 					<motion.input
 						whileFocus={{ borderColor: "#000000", padding: "8px" }}
 						required
 						type='email'
+						id='email'
 						name='email'
 						className='focus:outline-none font-light border-b-[1px] border-zinc-400 min-w-full'
 					/>
 				</div>
 
 				<div className='flex flex-col flex-start'>
-					<label className='pb-4'>
+					<label className='pb-4' htmlFor='message'>
 						Message:<span className='text-red-600'>*</span>
 					</label>
 					<motion.textarea
 						whileFocus={{ borderColor: "#000000" }}
 						required
+						id='message'
 						name='message'
 						className='focus:outline-none p-4 text-base rounded-lg font-light border-[1px] border-zinc-400 min-w-full min-h-[9rem]'
 					/>
@@ -90,6 +93,7 @@ let Contact = () => {
 					sitekey={`${process.env.GATSBY_CAPTCHA_SITE_KEY}`}
 					onChange={sendEmail}
 				/>
+
 				<motion.input
 					whileHover={{
 						scale: 1.05,
