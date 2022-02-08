@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Nav from "./nav"
 import { motion } from "framer-motion"
 import MobileNav from "./MobileNavBar/mobileNav"
@@ -7,8 +7,6 @@ export default function Layout({ children, path }) {
 	let location = children.props.path.split("/").filter((str) => {
 		return /\S/.test(str)
 	})
-
-	const [isLoaded, setIsLoaded] = useState(false)
 
 	return (
 		<div

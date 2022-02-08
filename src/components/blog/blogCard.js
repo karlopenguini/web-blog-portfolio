@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { motion } from "framer-motion"
+
 export default function BlogCard({ title, date, description, slug }) {
 	return (
 		<Link fade to={slug}>

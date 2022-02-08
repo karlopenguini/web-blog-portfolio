@@ -5,18 +5,19 @@ import Work from "../components/works/Work"
 import { graphql, Link } from "gatsby"
 
 let works = ({ data }) => {
-	let allProjects = data.portfolio_data.projects.data
+	console.log(data.allStrapiProject.edges)
+	let allProjects = data.allStrapiProject.edges
 
 	let featuredProjects = {}
 	let otherProjects = {}
 
 	for (const [key, value] of Object.entries(allProjects)) {
-		let { is_featured } = value.attributes
+		let { is_featured } = value.node
 
 		if (is_featured) {
-			featuredProjects[key] = value.attributes
+			featuredProjects[key] = value.node
 		} else {
-			otherProjects[key] = value.attributes
+			otherProjects[key] = value.node
 		}
 	}
 
@@ -64,10 +65,7 @@ let works = ({ data }) => {
 												title={project_title}
 												year={project_year}
 												desc={project_description}
-												img={
-													project_thumbnail.data
-														.attributes.url
-												}
+												img={project_thumbnail.url}
 											/>
 										</Link>
 									)
@@ -118,23 +116,17 @@ let works = ({ data }) => {
 
 export const query = graphql`
 	query MyQuery {
-		portfolio_data {
-			projects {
-				data {
+		allStrapiProject {
+			edges {
+				node {
 					id
-					attributes {
-						project_title
-						project_year
-						project_description
-						project_thumbnail {
-							data {
-								attributes {
-									url
-								}
-							}
-						}
-						is_featured
-						project_link
+					project_title
+					project_year
+					project_description
+					is_featured
+					project_link
+					project_thumbnail {
+						url
 					}
 				}
 			}

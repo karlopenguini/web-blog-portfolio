@@ -5,7 +5,7 @@ import BlogCard from "../components/blog/blogCard"
 import { graphql } from "gatsby"
 
 let IndexPage = ({ data }) => {
-	let blogPosts = data.portfolio_data.blogPosts.data
+	let blogPosts = data.allStrapiBlogPost.edges
 
 	return (
 		<div className='flex flex-col space-y-10'>
@@ -13,10 +13,10 @@ let IndexPage = ({ data }) => {
 			{Object.keys(blogPosts).length ? (
 				Object.entries(blogPosts).map(([id, data]) => (
 					<BlogCard
-						title={data.attributes.title}
-						date={data.attributes.date}
-						description={data.attributes.description}
-						slug={data.attributes.slug}
+						title={data.node.title}
+						date={data.node.date}
+						description={data.node.description}
+						slug={data.node.slug}
 					/>
 				))
 			) : (
@@ -27,15 +27,14 @@ let IndexPage = ({ data }) => {
 }
 export const query = graphql`
 	{
-		portfolio_data {
-			blogPosts {
-				data {
-					attributes {
-						title
-						date
-						description
-						slug
-					}
+		allStrapiBlogPost {
+			edges {
+				node {
+					title
+					date
+					slug
+					description
+					blogContent
 				}
 			}
 		}

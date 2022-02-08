@@ -5,7 +5,11 @@ let FeaturedCard = ({ title, year, desc, img }) => {
 
 	return (
 		<article className='flex flex-col w-full shadow-2xl '>
-			<img className='max-h-[200px] w-full object-cover' src={cardImg} />
+			<img
+				className='max-h-[200px] w-full object-cover'
+				src={cardImg}
+				alt={title}
+			/>
 
 			<div
 				className='

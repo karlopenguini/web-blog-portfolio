@@ -2,20 +2,13 @@ import * as React from "react"
 import { graphql, Link } from "gatsby"
 import Image from "../components/gallery/image.js"
 
-function getSpanEstimate(size) {
-	if (size > 250) {
-		return 2
-	}
-	return 1
-}
-
 let IndexPage = ({ data }) => {
-	let images = data.portfolio_data.galleries.data
+	let images = data.allStrapiGallery.edges
 
 	let imageComponentsData = {}
 
 	for (const [key, value] of Object.entries(images)) {
-		imageComponentsData[key] = value.attributes
+		imageComponentsData[key] = value.node
 	}
 
 	return (
@@ -40,23 +33,17 @@ let IndexPage = ({ data }) => {
 
 export const query = graphql`
 	{
-		portfolio_data {
-			galleries {
-				data {
-					attributes {
-						date
-						description
-						title
-						image {
-							data {
-								attributes {
-									url
-									height
-									width
-								}
-							}
-						}
-						slug
+		allStrapiGallery {
+			edges {
+				node {
+					date
+					description
+					title
+					slug
+					image {
+						url
+						width
+						height
 					}
 				}
 			}
